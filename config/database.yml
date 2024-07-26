@@ -5,18 +5,12 @@ default: &default
 
 development:
   <<: *default
-  adapter: sqlite3
-  database: db/development.sqlite3
+  database: flatiron_mod3_development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: flatiron_mod3_test
 
 production:
   <<: *default
-  database: TaskList_production
-  username: TaskList
-  password: <%= ENV['TASKLIST_DATABASE_PASSWORD'] %>
+  database: flatiron_mod3_production

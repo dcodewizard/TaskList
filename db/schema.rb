@@ -11,8 +11,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_07_23_131335) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "subtasks", force: :cascade do |t|
-    t.integer "task_id", null: false
+    t.bigint "task_id", null: false
     t.text "description", null: false
     t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
@@ -27,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_23_131335) do
     t.datetime "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.check_constraint "status IN (0, 1, 2)", name: "tasks_status_check"
+    t.check_constraint "status = ANY (ARRAY[0, 1, 2])", name: "tasks_status_check"
   end
 
   add_foreign_key "subtasks", "tasks", on_delete: :cascade
