@@ -36,3 +36,60 @@
     transform: rotate(360deg);
   }
 }
+.task-box {
+  width: 70%;
+  display: grid;
+  gap: 8px;
+}
+.status-drpdn{
+  border: none;
+  background-color: transparent;
+  text-align: center;
+}
+.no-task-div {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 12px;
+  margin: 6px;
+}
+.custom-select {
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none; 
+  background: none;
+  border: 1px solid #ccc;
+}
+.custom-date {
+  width: 14%;
+  background-color: darkgray;
+  border: 1px solid #ccc;  
+  padding: 5px;          
+  font-size: 16px;         
+  cursor: pointer;          
+}
+.hide-field {
+  pointer-events: none;
+  border: none;
+}
+.ml-5 {
+  margin-left: 5%;
+}
+.mt-33 {
+  margin-top: 33px;
+}
+.fields-size {
+  width: 639px;
+  height: fit-content;
+}
+.custom-checkbox {
+  margin: 6px 28px 0 0;
+  width: 19px;
+}
+.plus-icon {
+  background-color: white;
+  border-radius: 50%;
+}
+img {
+  cursor: pointer;
+}
