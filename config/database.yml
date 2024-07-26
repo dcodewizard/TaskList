@@ -17,6 +17,6 @@ test:
 
 production:
   <<: *default
-  database: TASKLIST_production
-  username: TASKLIST
+  database: TaskList_production
+  username: TaskList
   password: <%= ENV['TASKLIST_DATABASE_PASSWORD'] %>
