@@ -3,8 +3,7 @@ import axios from 'axios';
 export async function getTasks() {
   try{
     const res = await axios.get(`tasks`);
-    console.log(res);
-    const tasks = res.tasks;
+    const tasks = res.data.tasks;
     return tasks;
   }
   catch(error) {
@@ -59,6 +58,7 @@ export async function updateTask(data, id) {
 
 export async function filteredTasks(data) {
   try{
+    debugger
     const res = await axios.get(`tasks/get_filtered_tasks`, {params: data});
     return res.data;
   }

@@ -57,12 +57,11 @@ class TasksController < ApplicationController
                      else
                        tasks
                      end
-
     @tasks = case date_filter
              when 0
                filtered_tasks.where(deadline: Date.today.all_day)
              when 1
-               filtered_tasks.where(deadline: Date.today.beginning_of_week..Date.today.end_of_week)
+               filtered_tasks.where(deadline: Date.today..Date.today.end_of_week)
              when 2
                filtered_tasks.where('deadline < ?', Date.today)
              else

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import TaskSection from '../components/TaskSection';
 import ExistingSubtasks from '../components/ExistingSubtasks';
@@ -9,9 +10,13 @@ import { updateTask, getTask } from '../api';
 import { deleteSubtask, createSubtask, updateSubtask, updateSubtaskPatch } from '../api';
 
 const TaskDetail = () => {
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [task, setTask] = useState({});
+  const [oldTask, setOldTask] = useState({});
   const [subtasks, setSubtasks] = useState([]);
+  const [oldSubtasks, setOldSubtasks] = useState([]);
   
   const [taskEdit, setTaskEdit] = useState(false);
   const [newSubTasks, setnewSubTasks] = useState([]);
@@ -21,7 +26,9 @@ const TaskDetail = () => {
     const fetchTask = async (id)=>{
       const fetchedTask  = await getTask(id);
       setTask(fetchedTask);
+      setOldTask(fetchedTask);
       setSubtasks(fetchedTask.subtasks || []);
+      setOldSubtasks(fetchedTask.subtasks || []);
     }
     fetchTask(id);
   }, [id]);
@@ -29,6 +36,7 @@ const TaskDetail = () => {
   async function handleTaskUpdate(updatedTask) {
     const _tasks  = await updateTask(updatedTask, id);
     setTask(_tasks.data);
+    setOldTask(_tasks.data);
     setTaskEdit(!taskEdit);
   }
 
@@ -49,6 +57,7 @@ const TaskDetail = () => {
   async function handleSubtaskUpdate(subtaskId, updatedSubtask) {
     const _subtask  = await updateSubtask(subtaskId, updatedSubtask);
     setSubtasks(subtasks.map(subtask => (subtask.id === subtaskId ? _subtask.data : subtask)));
+    setOldSubtasks(subtasks)
     alert('Subtask updated successfully');
   }
 
@@ -62,6 +71,7 @@ const TaskDetail = () => {
   }
 
   function UpdateSubtask(subtaskId, updatedSubtask) {
+    debugger
     setSubtasks(subtasks.map(subtask => (subtask.id === subtaskId ? updatedSubtask : subtask)));
   }
 
@@ -73,10 +83,6 @@ const TaskDetail = () => {
     setnewSubTasks([...newSubTasks, { description: '', status: 0 }]);
   };
 
-  const handleTaskEdit = () => {
-    setTaskEdit(!taskEdit)
-  }
-
   const handleSubtaskEdit = () => {
     setSubtaskEdit(!subtaskEdit)
   }
@@ -84,11 +90,17 @@ const TaskDetail = () => {
   return (
     <div className="card mt-5 w-50" >
       <div className="card-body">
-        <div>
-          <img onClick={() => handleTaskEdit()} src={`${process.env.PUBLIC_URL}/images/pen.svg`}/>
+        <div className='d-flex justify-content-between'>
+          <div>
+            <img onClick={() => navigate('/')} src={`${process.env.PUBLIC_URL}/images/return.svg`} width='30px' height='30px'/>
+          </div>
+          <div>
+            <img onClick={() => setTaskEdit(!taskEdit)} src={`${process.env.PUBLIC_URL}/images/pen.svg`}/>
+          </div>
         </div>
         <TaskSection 
           task={task}
+          oldTask={oldTask}
           taskEdit={taskEdit}
           onUpdateTask={handleTaskUpdate}
         />
@@ -110,6 +122,7 @@ const TaskDetail = () => {
           </div>
           <ExistingSubtasks 
             subtasks={subtasks}
+            oldSubtasks={oldSubtasks}
             subtaskEdit={subtaskEdit}
             UpdateSubtask={UpdateSubtask}
             handleSubtaskEdit={handleSubtaskEdit}

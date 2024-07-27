@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function TaskSection({task, taskEdit, onUpdateTask}) {
+export default function TaskSection({task, oldTask, taskEdit, onUpdateTask}) {
   const [taskSection, setTaskSection] = useState(task);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function TaskSection({task, taskEdit, onUpdateTask}) {
       <div
         className={`card-text h2 w-100 text-center ${taskEdit ? 'd-none' : ''}`}
       >
-        {taskSection.heading}
+        {oldTask.heading}
       </div>
       <input
         type="text"
@@ -31,7 +31,7 @@ export default function TaskSection({task, taskEdit, onUpdateTask}) {
       <div
         className={`card-text text-center w-100 p ${taskEdit ? 'd-none' : ''}`}
       >
-        {taskSection.description}
+        {oldTask.description}
       </div>
       <input
         type="text"
@@ -42,7 +42,7 @@ export default function TaskSection({task, taskEdit, onUpdateTask}) {
       <div>
         Status: 
         <select
-          value={taskSection.status}
+          value={oldTask.status}
           onChange={e=> updateTaskSection({status: e.target.value})}
           className={`card-title text-center custom-select w-50 mt-4 p ${!taskEdit ? 'hide-field' : ''}`}
         >
