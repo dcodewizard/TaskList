@@ -41,7 +41,6 @@ Create a .env file in the root directory to store sensitive information like dat
 ```
 DATABASE_USERNAME=your_username
 DATABASE_PASSWORD=your_password
-
 ```
 
 ### Database creation
