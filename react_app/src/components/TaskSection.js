@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function TaskSection({task, oldTask, taskEdit, onUpdateTask}) {
+export default function TaskSection({task, oldTask, taskEdit, toggleTaskEdit, onUpdateTask}) {
   const [taskSection, setTaskSection] = useState(task);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function TaskSection({task, oldTask, taskEdit, onUpdateTask}) {
       <div>
         Status: 
         <select
-          value={oldTask.status}
+          value={taskSection.status}
           onChange={e=> updateTaskSection({status: e.target.value})}
           className={`card-title text-center custom-select w-25 mt-4 p ${!taskEdit ? 'hide-field' : ''}`}
         >
@@ -59,8 +59,8 @@ export default function TaskSection({task, oldTask, taskEdit, onUpdateTask}) {
           onChange={e=> updateTaskSection({deadline: e.target.value})}
         />
       </div>
-    { taskEdit && <button className='btn btn-primary mt-3' onClick={onSubmit}>Update Task</button> }
-
+    { taskEdit && <button className='btn btn-primary mt-3 me-3' onClick={onSubmit}>Update Task</button> }
+    { taskEdit && <button className='btn btn-danger mt-3' onClick={toggleTaskEdit}>Cancel</button> }
     </div>
   )
 }

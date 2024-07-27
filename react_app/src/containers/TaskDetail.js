@@ -87,6 +87,10 @@ const TaskDetail = () => {
     setSubtaskEdit(!subtaskEdit)
   }
 
+  const toggleTaskEdit = () => {
+    setTaskEdit(!taskEdit)
+  }
+
   return (
     <div className="card mt-5 w-50" >
       <div className="card-body">
@@ -98,7 +102,7 @@ const TaskDetail = () => {
                  width='30px' height='30px'/>
           </div>
           <div>
-            <img onClick={() => setTaskEdit(!taskEdit)}
+            <img onClick={toggleTaskEdit}
                  src={`${process.env.PUBLIC_URL}/images/pen.svg`}
                  alt='edit-icon'/>
           </div>
@@ -107,6 +111,7 @@ const TaskDetail = () => {
           task={task}
           oldTask={oldTask}
           taskEdit={taskEdit}
+          updateTaskEdit={toggleTaskEdit}
           onUpdateTask={handleTaskUpdate}
         />
         <div className='subtasks mt-33'>
@@ -121,7 +126,7 @@ const TaskDetail = () => {
               { 
                 subtasks.length > 0 &&
                 !subtaskEdit &&
-                <img onClick={() => handleSubtaskEdit()}
+                <img onClick={handleSubtaskEdit}
                      src={`${process.env.PUBLIC_URL}/images/pen.svg`}
                      alt='edit-icon'/>
               }

@@ -2,7 +2,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*' # Change this to match your React app's URL
+    origins 'https://fastidious-monstera-a8ca4d.netlify.app/' # Change this to match your React app's URL
     resource '*',
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
