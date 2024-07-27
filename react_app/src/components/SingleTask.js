@@ -21,7 +21,10 @@ export default function SingleTask(props) {
               <option value="1">In Progress</option>
               <option value="2">Completed</option>
             </select>
-            <img onClick={() => props.removeTask(props.task.id)} src={`${process.env.PUBLIC_URL}/images/trashcan.svg`} className="plus-icon" />
+            <img onClick={() => props.removeTask(props.task.id)}
+                 src={`${process.env.PUBLIC_URL}/images/trashcan.svg`}
+                 className="plus-icon" 
+                 alt='delete-icon'/>
           </div>
         </div>
       </div>

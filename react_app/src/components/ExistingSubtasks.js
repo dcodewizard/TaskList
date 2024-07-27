@@ -34,7 +34,10 @@ export default function ExistingSubtasks(props) {
                 />
               }
               <div>
-                <img onClick={() => props.handleSubtaskDelete(subtask.id, subtask)} src={`${process.env.PUBLIC_URL}/images/trashcan.svg`} className="plus-icon" />
+                <img onClick={() => props.handleSubtaskDelete(subtask.id, subtask)}
+                     src={`${process.env.PUBLIC_URL}/images/trashcan.svg`}
+                     className="plus-icon"
+                     alt='delete-icon' />
               </div>
             </div>
           </li>

@@ -4,7 +4,7 @@ export default function FiltersHeader(props) {
       {!props.showForm && (
         <div className='d-flex justify-content-between'>
           <div class="mb-4" onClick={props.handleShowForm}>
-            <img src={`${process.env.PUBLIC_URL}/images/plus.svg`} className="plus-icon" />
+            <img src={`${process.env.PUBLIC_URL}/images/plus.svg`} className="plus-icon" alt='plus-icon'/>
           </div>
           <div className='h4'>
           Filter:

@@ -13,7 +13,10 @@ export default function NewSubtasks(props) {
             />
             <div>
               <button type='submit' className="me-3">Save</button>
-              <img onClick={() => props.handleNewSubtaskDelete(index)} src={`${process.env.PUBLIC_URL}/images/trashcan.svg`} className="plus-icon" />
+              <img onClick={() => props.handleNewSubtaskDelete(index)}
+                   src={`${process.env.PUBLIC_URL}/images/trashcan.svg`} 
+                   className="plus-icon" 
+                   alt='plus-icon'/>
             </div>
           </form>
         )))

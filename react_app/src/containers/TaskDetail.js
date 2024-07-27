@@ -92,10 +92,15 @@ const TaskDetail = () => {
       <div className="card-body">
         <div className='d-flex justify-content-between'>
           <div>
-            <img onClick={() => navigate('/')} src={`${process.env.PUBLIC_URL}/images/return.svg`} width='30px' height='30px'/>
+            <img onClick={() => navigate('/')}
+                 src={`${process.env.PUBLIC_URL}/images/return.svg`}
+                 alt='back-icon'
+                 width='30px' height='30px'/>
           </div>
           <div>
-            <img onClick={() => setTaskEdit(!taskEdit)} src={`${process.env.PUBLIC_URL}/images/pen.svg`}/>
+            <img onClick={() => setTaskEdit(!taskEdit)}
+                 src={`${process.env.PUBLIC_URL}/images/pen.svg`}
+                 alt='edit-icon'/>
           </div>
         </div>
         <TaskSection 
@@ -109,14 +114,16 @@ const TaskDetail = () => {
             <div className='d-inline-flex align-items-center ps-4'>
               <h5 className="card-title mb-0 me-2">Subtasks</h5> {/* Adjust margin-right with me-2 */}
               <div onClick={handleAddSubtask}>
-                <img src={`${process.env.PUBLIC_URL}/images/plus.svg`} width={20} height={20} />
+                <img src={`${process.env.PUBLIC_URL}/images/plus.svg`} alt='plus-icon' width={20} height={20} />
               </div>
             </div>
             <div>
               { 
                 subtasks.length > 0 &&
                 !subtaskEdit &&
-                <img onClick={() => handleSubtaskEdit()} src={`${process.env.PUBLIC_URL}/images/pen.svg`}/>
+                <img onClick={() => handleSubtaskEdit()}
+                     src={`${process.env.PUBLIC_URL}/images/pen.svg`}
+                     alt='edit-icon'/>
               }
             </div>
           </div>

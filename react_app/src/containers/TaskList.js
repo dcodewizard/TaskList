@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import NewTaskForm from '../components/NewTaskForm'
@@ -36,7 +36,7 @@ const TaskList = () => {
   };
 
   async function handleStatusChange(taskId, newStatus, tasks) {
-    const _tasks  = await updateTask({status: newStatus}, taskId);
+    await updateTask({status: newStatus}, taskId);
     const updatedTasks = tasks.map(task =>
       task.id === taskId ? { ...task, status: newStatus } : task
     );
