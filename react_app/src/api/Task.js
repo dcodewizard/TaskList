@@ -3,7 +3,8 @@ import axios from 'axios';
 export async function getTasks() {
   try{
     const res = await axios.get(`tasks`);
-    const tasks = res.data.tasks;
+    console.log(res);
+    const tasks = res.tasks;
     return tasks;
   }
   catch(error) {
