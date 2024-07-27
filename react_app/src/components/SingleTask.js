@@ -24,7 +24,8 @@ export default function SingleTask(props) {
             <img onClick={() => props.removeTask(props.task.id)}
                  src={`${process.env.PUBLIC_URL}/images/trashcan.svg`}
                  className="plus-icon" 
-                 alt='delete-icon'/>
+                 alt='delete-icon'
+                 height='20px' width='20px'/>
           </div>
         </div>
       </div>
