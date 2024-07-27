@@ -16,7 +16,7 @@ export default function TaskSection({task, oldTask, taskEdit, onUpdateTask}) {
   }
 
   return (
-    <div className='mx-auto d-inline-block mt-3 w-50'>
+    <div className='mx-auto d-inline-block mt-3 w-100'>
       <div
         className={`card-text h2 w-100 text-center ${taskEdit ? 'd-none' : ''}`}
       >
@@ -44,7 +44,7 @@ export default function TaskSection({task, oldTask, taskEdit, onUpdateTask}) {
         <select
           value={oldTask.status}
           onChange={e=> updateTaskSection({status: e.target.value})}
-          className={`card-title text-center custom-select w-50 mt-4 p ${!taskEdit ? 'hide-field' : ''}`}
+          className={`card-title text-center custom-select w-25 mt-4 p ${!taskEdit ? 'hide-field' : ''}`}
         >
           <option value={0}>Pending</option>
           <option value={1}>In Progress</option>

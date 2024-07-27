@@ -6,13 +6,13 @@ export default function NewSubtasks(props) {
           <form onSubmit={(e) => props.handleNewSubtaskCreate(props.task.id, props.newSubTasks[index], index, e)} className="d-flex justify-content-between">
             <input
               type="text"
-              className="card-text fields-size"
+              className="card-text fields-size w-75"
               value={subtask.description}
               onChange={(e) => props.UpdateNewSubtask(index, {description: e.target.value, status: subtask.status})} 
               required
             />
-            <button type='submit'>Save</button>
             <div>
+              <button type='submit' className="me-3">Save</button>
               <img onClick={() => props.handleNewSubtaskDelete(index)} src={`${process.env.PUBLIC_URL}/images/trashcan.svg`} className="plus-icon" />
             </div>
           </form>

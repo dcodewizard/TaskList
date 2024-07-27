@@ -49,15 +49,16 @@ const TaskDetail = () => {
     e.preventDefault();
     updatedSubtask['task_id'] = task_id
     const _subtask  = await createSubtask(updatedSubtask);
-
-    setSubtasks([_subtask.data.task, ...subtasks]);
+    let updatedArray = [_subtask.data.task, ...subtasks]
+    setSubtasks(updatedArray);
+    setOldSubtasks(updatedArray);
     setnewSubTasks(newSubTasks.filter((subtask, i) => i !== index));
   };
 
   async function handleSubtaskUpdate(subtaskId, updatedSubtask) {
     const _subtask  = await updateSubtask(subtaskId, updatedSubtask);
     setSubtasks(subtasks.map(subtask => (subtask.id === subtaskId ? _subtask.data : subtask)));
-    setOldSubtasks(subtasks)
+    setOldSubtasks(subtasks);
     alert('Subtask updated successfully');
   }
 
@@ -71,7 +72,6 @@ const TaskDetail = () => {
   }
 
   function UpdateSubtask(subtaskId, updatedSubtask) {
-    debugger
     setSubtasks(subtasks.map(subtask => (subtask.id === subtaskId ? updatedSubtask : subtask)));
   }
 

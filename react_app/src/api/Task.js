@@ -58,7 +58,6 @@ export async function updateTask(data, id) {
 
 export async function filteredTasks(data) {
   try{
-    debugger
     const res = await axios.get(`tasks/get_filtered_tasks`, {params: data});
     return res.data;
   }
